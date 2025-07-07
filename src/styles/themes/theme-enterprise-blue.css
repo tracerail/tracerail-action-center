@@ -1,0 +1,32 @@
+/* Theme: Enterprise Blue */
+/* Philosophy: Professional & Trustworthy */
+
+:root {
+  /* General */
+  --color-background: #f4f5f7;
+  --color-surface: #ffffff; /* For cards and primary content areas */
+  --color-border: #dfe1e6; /* For borders on panels and inputs */
+
+  /* Text */
+  --color-text-primary: #172b4d; /* For main text, headers */
+  --color-text-secondary: #6b778c; /* For secondary info, labels */
+  --color-text-on-primary: #ffffff; /* Text used on top of primary action colors */
+
+  /* Primary Action (Buttons, Links) */
+  --color-action-primary: #0052cc;
+  --color-action-primary-hover: #0041a3; /* A slightly darker shade for hover */
+
+  /* Secondary/Default Actions */
+  --color-action-secondary: #f4f5f7;
+  --color-action-secondary-hover: #e9eaec;
+
+  /* Accents */
+  --color-accent-success: #07884D;
+  --color-accent-danger: #de350b;
+  --color-accent-danger-hover: #bf2600; /* A darker red for hover */
+  --color-accent-warning: #ffab00;
+
+  /* Risk Scores for AI Analysis */
+  --color-risk-medium: #ffab00; /* Using warning color for medium risk */
+  --color-risk-high: #de350b; /* Using danger color for high risk */
+}

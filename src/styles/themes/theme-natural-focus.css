@@ -1,0 +1,32 @@
+/* Theme: Natural Focus */
+/* Philosophy: Calm & Focused */
+
+:root {
+  /* General */
+  --color-background: #fdfbf7;
+  --color-surface: #f7f5f2; /* For cards and primary content areas */
+  --color-border: #e0ddd7; /* For borders on panels and inputs */
+
+  /* Text */
+  --color-text-primary: #403d39; /* For main text, headers */
+  --color-text-secondary: #777672; /* For secondary info, labels */
+  --color-text-on-primary: #ffffff; /* Text used on top of primary action colors */
+
+  /* Primary Action (Buttons, Links) */
+  --color-action-primary: #4a6d88;
+  --color-action-primary-hover: #3a576b; /* A slightly darker shade for hover */
+
+  /* Secondary/Default Actions */
+  --color-action-secondary: #e0ddd7;
+  --color-action-secondary-hover: #d1cbc1;
+
+  /* Accents */
+  --color-accent-success: #5a7d33;
+  --color-accent-danger: #b94a48;
+  --color-accent-danger-hover: #a33a38; /* A darker red for hover */
+  --color-accent-warning: #d97706;
+
+  /* Risk Scores for AI Analysis */
+  --color-risk-medium: #d97706; /* Using warning color for medium risk */
+  --color-risk-high: #b94a48; /* Using danger color for high risk */
+}

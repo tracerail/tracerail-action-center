@@ -1,0 +1,347 @@
+/* --- Global & Font Styles --- */
+body {
+    margin: 0;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+}
+
+/* --- Main Application Layout --- */
+.action-center-app {
+    display: flex;
+    height: 100vh;
+}
+
+.action-center-sidebar {
+    width: 320px;
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-surface);
+}
+
+.action-center-main-content {
+    flex: 1;
+    display: flex;
+    min-width: 0; /* Prevents flexbox overflow issues */
+}
+
+/* --- Sidebar Components --- */
+.search-bar {
+    padding: 16px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    font-size: 14px;
+    box-sizing: border-box;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+}
+
+.filter-tabs {
+    display: flex;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.filter-tabs button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+.filter-tabs button:hover {
+    background-color: var(--color-action-secondary-hover);
+}
+
+.filter-tabs button.active {
+    background-color: var(--color-action-secondary);
+    color: var(--color-action-primary);
+    font-weight: 600;
+}
+
+/* --- Case List & Items (Left Pane) --- */
+.case-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.case-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px;
+    border-bottom: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.case-list-item:hover {
+    background-color: var(--color-action-secondary-hover);
+}
+
+.case-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.case-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: var(--color-text-primary);
+}
+
+.case-metadata {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.case-last-update {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+    margin-left: 16px;
+}
+
+/* --- Case View (Main 3-Pane Container) --- */
+.case-view {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+}
+
+/* --- Activity Stream (Center Pane) --- */
+.activity-stream-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-width: 0;
+    background-color: var(--color-surface);
+}
+
+.activity-stream-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+}
+
+.activity-stream-header h2 {
+    font-size: 20px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--color-text-primary);
+}
+
+.activity-stream {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.message {
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 80%;
+    width: fit-content;
+    background-color: var(--color-action-secondary);
+    align-self: flex-start;
+}
+
+.message-sender {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: var(--color-text-secondary);
+}
+
+.message-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--color-text-primary);
+}
+
+/* --- Case Details Panel (Right Pane) --- */
+.case-details-panel {
+    width: 300px;
+    border-left: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.panel-header {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: var(--color-text-primary);
+}
+
+.details-group {
+    margin-bottom: 24px;
+}
+
+.group-header {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    margin-top: 0;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 8px;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.detail-label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 4px;
+}
+
+.detail-value {
+    font-size: 14px;
+    color: var(--color-text-primary);
+}
+
+.ai-details .risk-medium {
+    color: var(--color-risk-medium);
+    font-weight: 500;
+}
+
+.ai-details .risk-high {
+    color: var(--color-risk-high);
+    font-weight: 500;
+}
+
+/* --- Interaction Components --- */
+.interaction-container {
+    padding: 24px;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    flex-shrink: 0;
+}
+
+.interaction-prompt {
+    font-size: 15px;
+    color: var(--color-text-primary);
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+}
+
+.button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-action-secondary);
+    color: var(--color-text-primary);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.button:hover {
+    background-color: var(--color-action-secondary-hover);
+}
+
+.button-primary {
+    background-color: var(--color-action-primary);
+    border-color: var(--color-action-primary);
+    color: var(--color-text-on-primary);
+}
+
+.button-primary:hover {
+    background-color: var(--color-action-primary-hover);
+    border-color: var(--color-action-primary-hover);
+}
+
+.button-danger {
+    background-color: var(--color-accent-danger);
+    border-color: var(--color-accent-danger);
+    color: var(--color-text-on-primary);
+}
+
+.button-danger:hover {
+    background-color: var(--color-accent-danger-hover);
+    border-color: var(--color-accent-danger-hover);
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+}
+
+.form-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+.form-field input[type="text"],
+.form-field input[type="number"],
+.form-field input[type="date"],
+.form-field textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+    font-size: 15px;
+    font-family: inherit;
+    box-sizing: border-box;
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+}
+
+.form-field .checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.required-asterisk {
+    color: var(--color-accent-danger);
+}

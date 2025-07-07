@@ -1,0 +1,32 @@
+/* Theme: Developer Dark */
+/* Philosophy: Modern & Tech-Focused */
+
+:root {
+  /* General */
+  --color-background: #161B22;
+  --color-surface: #21262D; /* For cards and primary content areas */
+  --color-border: #30363d; /* For borders on panels and inputs */
+
+  /* Text */
+  --color-text-primary: #e6edf3; /* For main text, headers */
+  --color-text-secondary: #8b949e; /* For secondary info, labels */
+  --color-text-on-primary: #ffffff; /* Text used on top of primary action colors */
+
+  /* Primary Action (Buttons, Links) */
+  --color-action-primary: #58a6ff;
+  --color-action-primary-hover: #79b8ff; /* A slightly lighter shade for hover */
+
+  /* Secondary/Default Actions */
+  --color-action-secondary: #30363d;
+  --color-action-secondary-hover: #484f58;
+
+  /* Accents */
+  --color-accent-success: #3fb950;
+  --color-accent-danger: #f85149;
+  --color-accent-danger-hover: #fa7069; /* A lighter red for hover */
+  --color-accent-warning: #d29922;
+
+  /* Risk Scores for AI Analysis */
+  --color-risk-medium: #d29922; /* Using warning color for medium risk */
+  --color-risk-high: #f85149; /* Using danger color for high risk */
+}
