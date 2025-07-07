@@ -17,12 +17,18 @@
     "start": "PORT=3002 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:pact": "react-scripts test src/pact/cases.pact.test.js --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!@pact-foundation/pact|@pact-foundation/pact-core|axios)"
     ]
   },
   "browserslist": {
@@ -36,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@pact-foundation/pact": "^15.0.1"
   }
 }
