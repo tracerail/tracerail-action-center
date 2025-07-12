@@ -1,59 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import { submitDecision } from "../../api/cases";
 
 /**
  * Renders a set of action buttons based on the API contract.
  * Allows users to make a simple, single-choice decision.
  */
-const ActionButtons = ({ interactionId, prompt, payload, submitUrl }) => {
+const ActionButtons = ({ caseId, prompt, payload }) => {
   const { actions } = payload;
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleSubmit = async (actionValue) => {
-    const responseBody = {
-      interactionId,
-      response: {
-        action: actionValue,
-      },
-    };
+  const handleSubmit = async (decision) => {
+    setIsSubmitting(true);
+    setError(null);
 
-    console.log('Submitting to:', submitUrl);
-    console.log('Submission Body:', JSON.stringify(responseBody, null, 2));
-
-    // In a real implementation, you would use fetch() or a library like Axios
-    // to make a POST request to the `submitUrl`.
-    //
-    // try {
-    //   const response = await fetch(submitUrl, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       // Include authorization headers as needed
-    //     },
-    //     body: JSON.stringify(responseBody),
-    //   });
-    //
-    //   if (!response.ok) {
-    //     throw new Error(`API request failed with status ${response.status}`);
-    //   }
-    //
-    //   // Handle successful submission, e.g., by notifying the parent
-    //   // component to refresh the conversation history.
-    //   console.log('Submission successful!');
-    //
-    // } catch (error) {
-    //   console.error('Failed to submit action:', error);
-    //   // Handle submission error, e.g., by displaying an error message to the user.
-    // }
+    try {
+      await submitDecision(caseId, decision);
+      // In a real application, you might want to trigger a refresh
+      // of the case data here instead of reloading the page.
+      window.location.reload();
+    } catch (err) {
+      console.error("Failed to submit decision:", err);
+      setError("Failed to submit decision. Please try again.");
+      setIsSubmitting(false);
+    }
   };
 
   const getButtonClassName = (style) => {
     switch (style) {
-      case 'primary':
-        return 'button button-primary';
-      case 'danger':
-        return 'button button-danger';
+      case "primary":
+        return "button button-primary";
+      case "danger":
+        return "button button-danger";
       default:
-        return 'button';
+        return "button";
     }
   };
 
@@ -66,20 +47,22 @@ const ActionButtons = ({ interactionId, prompt, payload, submitUrl }) => {
             key={action.value}
             className={getButtonClassName(action.style)}
             onClick={() => handleSubmit(action.value)}
+            disabled={isSubmitting}
           >
-            {action.label}
+            {isSubmitting ? "Submitting..." : action.label}
           </button>
         ))}
       </div>
+      {error && <p className="interaction-error">{error}</p>}
     </div>
   );
 };
 
 ActionButtons.propTypes = {
   /**
-   * The unique identifier for this interaction instance.
+   * The unique identifier for the case, used for submitting the decision.
    */
-  interactionId: PropTypes.string.isRequired,
+  caseId: PropTypes.string.isRequired,
   /**
    * The user-facing prompt or question.
    */
@@ -92,14 +75,10 @@ ActionButtons.propTypes = {
       PropTypes.shape({
         label: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
-        style: PropTypes.oneOf(['primary', 'secondary', 'danger']),
-      })
+        style: PropTypes.oneOf(["primary", "secondary", "danger"]),
+      }),
     ).isRequired,
   }).isRequired,
-  /**
-   * The URL where the response should be submitted.
-   */
-  submitUrl: PropTypes.string.isRequired,
 };
 
 export default ActionButtons;

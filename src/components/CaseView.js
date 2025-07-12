@@ -71,7 +71,10 @@ const CaseView = () => {
             />
           ))}
         </div>
-        <InteractionPresenter interaction={caseData.activeInteraction} />
+        <InteractionPresenter
+          caseId={caseData.caseDetails.caseId}
+          interaction={caseData.activeInteraction}
+        />
       </div>
 
       {/* Right Pane: Case Details */}
